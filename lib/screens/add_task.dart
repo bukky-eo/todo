@@ -40,11 +40,16 @@ class AddTaskScreen extends StatelessWidget {
               height: 15,
             ),
             ElevatedButton(
-              onPressed: () {},
-              child: Text('Add Task'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.teal,
+              onPressed: () {
+                // add task to list view
+              },
+              child: Text(
+                'Add Task',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.teal.shade200,
+                  padding: EdgeInsets.symmetric(vertical: 15)),
             )
           ],
         ),
