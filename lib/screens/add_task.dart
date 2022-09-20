@@ -6,7 +6,7 @@ class AddTaskScreen extends StatelessWidget {
 
   final _controller = TextEditingController();
 
-  String? newTaskTitle;
+  String newTaskTitle = '';
   @override
   Widget build(BuildContext context) {
     return Container(
