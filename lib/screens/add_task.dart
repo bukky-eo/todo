@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  AddTaskScreen({Key? key}) : super(key: key);
+  final Function addTaskCallBack;
+  AddTaskScreen({Key? key, required this.addTaskCallBack}) : super(key: key);
 
+  final _controller = TextEditingController();
+
+  String? newTaskTitle;
   @override
-  final TextEditingController _controller = TextEditingController();
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff757575),
@@ -18,7 +21,7 @@ class AddTaskScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Add Task',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -29,27 +32,24 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               controller: _controller,
               autofocus: true,
-              // decoration: InputDecoration(
-              //     enabledBorder: OutlineInputBorder(
-              //   borderRadius: BorderRadius.zero,
-              //   borderSide:  BorderSide(color: Colors.teal),
-              // )
-              // ),
+              onChanged: (newTitle) {
+                newTaskTitle = newTitle;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             ElevatedButton(
               onPressed: () {
-                // add task to list view
+                addTaskCallBack(newTaskTitle);
               },
-              child: Text(
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.teal.shade500,
+                  padding: const EdgeInsets.symmetric(vertical: 15)),
+              child: const Text(
                 'Add Task',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.teal.shade200,
-                  padding: EdgeInsets.symmetric(vertical: 15)),
             )
           ],
         ),
@@ -57,4 +57,7 @@ class AddTaskScreen extends StatelessWidget {
     );
   }
 }
+
 // ()
+// final Function() addTaskCallBack;
+// final _controller = TextEditingController();
